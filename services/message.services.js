@@ -1,5 +1,5 @@
 
-var Message = require('../models/message.model'); //capitalize because it's constructor
+var Message = require('../models/message.model'); 
 module.exports = {
   saveAllMessage: saveAllMessage,
   fetchAllMessage: fetchAllMessage,
