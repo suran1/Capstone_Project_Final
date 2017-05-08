@@ -1,0 +1,45 @@
+<h2 class="page-header"> Homepage</h2>
+
+<form method="post" action="/sendsms">
+  <div class="form-group" >
+      <label for="messageSelect1">Message select</label>
+      <select class="form-control" id="messageSelect1" onchange="myFunction(this.value)">
+        <option value="">Custom Message</option>
+        {{# each message}}
+        <option value="{{body}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <script>
+
+function myFunction(value) {
+
+  var x = document.getElementById("messageTextarea");
+  clearinnerHTML();
+  x.innerHTML = value;
+  x.value = value;
+}
+function clearinnerHTML() {
+  var x = document.getElementById("messageTextarea");
+  x.value = "";
+  x.innerHTML = '';
+}
+</script>
+
+    <div class="form-group">
+     <label for="messageTextarea">Message textarea</label>
+     <textarea class="form-control" id="messageTextarea" rows="3" name="text" value=""></textarea>
+   </div>
+
+    {{# each user}}
+   <div class="form-check">
+      <label class="form-check-label">
+       <input type="checkbox" class="form-check-input" name="phone" value="{{phonenumber}}">
+       {{name.first}} {{name.last}}
+     </label>
+  </div>
+     {{/each}}
+<br> </br>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
